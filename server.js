@@ -11,7 +11,13 @@ const app = express();
 
 connectDB(); // now MONGO_URI will be read inside the function
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://checkbox-front-git-main-prodipta-chakrabortys-projects.vercel.app/"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/checklist", checklistRoutes);
